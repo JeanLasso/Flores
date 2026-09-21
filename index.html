@@ -4,44 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para ti 💜</title>
+    <!-- Importando una fuente elegante y romántica desde Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
     <style>
-        /* Fondo celeste y configuración general */
+        /* Fondo celeste */
         body {
             margin: 0;
             padding: 0;
-            background-color: #a8d8ea; /* Color celeste suave */
+            background-color: #a8d8ea; /* Celeste suave */
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
         }
 
-        /* Texto Superior Izquierdo */
+        /* Mensaje Superior Derecha (Actualizado) */
         .mensaje-superior {
             position: absolute;
             top: 30px;
-            left: 30px;
-            font-size: 1.4rem;
+            right: 30px; /* Movido a la derecha */
+            text-align: right; /* Texto alineado a la derecha */
+            font-size: 1.4rem; /* Tamaño reducido, ideal para esta fuente cursiva */
+            font-family: 'Dancing Script', cursive; /* Nueva fuente bonita */
             color: #2c3e50;
-            max-width: 400px;
-            font-weight: 600;
-            line-height: 1.5;
+            max-width: 320px;
+            line-height: 1.2;
             animation: aparecerTexto 3s ease-in-out;
+            z-index: 10;
         }
 
-        /* Texto Inferior Derecho (J.C.L.A) */
+        /* Firma Inferior Derecha */
         .firma {
             position: absolute;
             bottom: 20px;
             right: 30px;
             font-size: 0.9rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #2c3e50;
             font-weight: bold;
             letter-spacing: 3px;
             opacity: 0.8;
             animation: aparecerTexto 4s ease-in-out;
+            z-index: 10;
         }
 
         @keyframes aparecerTexto {
@@ -49,219 +54,131 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* Contenedor de las flores */
-        .jardin {
-            display: flex;
-            gap: 60px;
-            align-items: flex-end;
-            height: 300px;
+        /* Contenedor del corazón */
+        #heart-container {
             position: relative;
-            top: 40px;
+            width: 0; 
+            height: 0;
         }
 
-        /* Animaciones base para crecer y florecer */
-        @keyframes crecerTallo {
-            0% { height: 0; }
-            100% { height: 160px; }
-        }
-        @keyframes crecerTalloTulipan {
-            0% { height: 0; }
-            100% { height: 130px; }
-        }
-        @keyframes florecer {
-            0% { transform: scale(0); opacity: 0; }
-            80% { transform: scale(1.1); opacity: 1; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        @keyframes girarSuave {
-            0% { transform: scale(1) rotate(0deg); }
-            100% { transform: scale(1) rotate(360deg); }
+        @keyframes popIn {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+            70% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
         }
 
-        /* --- ESTILOS DEL GIRASOL --- */
-        .girasol-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-end;
-        }
-        .tallo-girasol {
-            width: 8px;
-            height: 0px;
-            background-color: #4caf50;
-            border-radius: 4px;
-            animation: crecerTallo 2s forwards;
-            transform-origin: bottom;
-        }
-        .cabeza-girasol {
-            position: relative;
-            width: 80px;
-            height: 80px;
-            margin-bottom: -10px;
-            z-index: 2;
-            transform: scale(0);
-            animation: florecer 1.5s 1.8s forwards; /* Florece después del tallo */
-        }
-        .centro-girasol {
+        /* --- GIRASOLES --- */
+        .sunflower {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 45px;
-            height: 45px;
-            background-color: #5d4037;
+            width: 26px;
+            height: 26px;
+            background-color: #5d4037; 
+            border: 9px dotted #ffeb3b; 
             border-radius: 50%;
-            z-index: 3;
-            box-shadow: inset 0 0 10px #3e2723;
-        }
-        .petalos-girasol {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            animation: girarSuave 25s linear infinite; /* Gira lentamente */
-        }
-        .petalo-g {
-            position: absolute;
-            top: -15px;
-            left: 30px;
-            width: 20px;
-            height: 55px;
-            background-color: #ffeb3b;
-            border-radius: 50px 50px 0 0;
-            transform-origin: 10px 55px;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
-        }
-        /* Posicionando los 8 pétalos */
-        .petalo-g:nth-child(1) { transform: rotate(0deg); }
-        .petalo-g:nth-child(2) { transform: rotate(45deg); }
-        .petalo-g:nth-child(3) { transform: rotate(90deg); }
-        .petalo-g:nth-child(4) { transform: rotate(135deg); }
-        .petalo-g:nth-child(5) { transform: rotate(180deg); }
-        .petalo-g:nth-child(6) { transform: rotate(225deg); }
-        .petalo-g:nth-child(7) { transform: rotate(270deg); }
-        .petalo-g:nth-child(8) { transform: rotate(315deg); }
-
-        .hoja-girasol {
-            position: absolute;
-            bottom: 40px;
-            right: -25px;
-            width: 30px;
-            height: 50px;
-            background-color: #4caf50;
-            border-radius: 0 50% 0 50%;
-            transform: rotate(30deg) scale(0);
-            transform-origin: bottom left;
-            animation: florecer 1s 1.5s forwards;
+            transform: translate(-50%, -50%) scale(0); 
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 3; 
         }
 
-        /* --- ESTILOS DEL TULIPÁN --- */
-        .tulipan-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-end;
-        }
-        .tallo-tulipan {
-            width: 6px;
-            height: 0px;
-            background-color: #388e3c;
-            border-radius: 3px;
-            animation: crecerTalloTulipan 2s 1s forwards; /* Inicia un poco después del girasol */
-            transform-origin: bottom;
-        }
-        .cabeza-tulipan {
-            position: relative;
-            width: 45px;
-            height: 55px;
-            background-color: #ff4081;
+        /* --- TULIPANES --- */
+        .tulip {
+            position: absolute;
+            width: 14px;
+            height: 22px;
             border-radius: 40% 40% 10% 10%;
-            margin-bottom: -5px;
-            z-index: 2;
-            transform: scale(0);
-            animation: florecer 1.5s 2.5s forwards;
-            box-shadow: inset -5px -5px 10px rgba(0,0,0,0.1);
+            transform: translate(-50%, -50%) scale(0); 
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+            z-index: 1;
         }
-        /* Pétalos laterales del tulipán */
-        .cabeza-tulipan::before, .cabeza-tulipan::after {
+        
+        .tulip::before, .tulip::after {
             content: '';
             position: absolute;
             bottom: 0;
-            width: 25px;
-            height: 60px;
-            background-color: #f50057;
+            width: 9px;
+            height: 24px;
             border-radius: 40% 40% 10% 10%;
         }
-        .cabeza-tulipan::before {
-            left: -5px;
-            transform: rotate(-15deg);
-            transform-origin: bottom right;
-        }
-        .cabeza-tulipan::after {
-            right: -5px;
-            transform: rotate(15deg);
-            transform-origin: bottom left;
-        }
+        .tulip::before { left: -3px; transform: rotate(-15deg); transform-origin: bottom right; }
+        .tulip::after { right: -3px; transform: rotate(15deg); transform-origin: bottom left; }
         
-        .hoja-tulipan {
-            position: absolute;
-            bottom: 30px;
-            left: -20px;
-            width: 25px;
-            height: 45px;
-            background-color: #388e3c;
-            border-radius: 50% 0 50% 0;
-            transform: rotate(-30deg) scale(0);
-            transform-origin: bottom right;
-            animation: florecer 1s 2.2s forwards;
-        }
+        /* Colores de los Tulipanes */
+        .tulip.red { background: #ef5350; }
+        .tulip.red::before, .tulip.red::after { background: #e53935; }
+        
+        .tulip.yellow { background: #ffee58; }
+        .tulip.yellow::before, .tulip.yellow::after { background: #fbc02d; }
+        
+        .tulip.purple { background: #ab47bc; }
+        .tulip.purple::before, .tulip.purple::after { background: #8e24aa; }
 
     </style>
 </head>
 <body>
 
-    <!-- Mensaje Superior -->
+    <!-- Mensaje Superior Derecha -->
     <div class="mensaje-superior">
-        Se que no es lo que esperabas, o no es mucho, pero es con cariño... lokita mia :3💜
+        Se que no es lo que esperabas, o no es mucho pero es con cariño lokita mia :3💜
     </div>
 
-    <!-- El Jardín Animado -->
-    <div class="jardin">
-        
-        <!-- Flor 1: Girasol -->
-        <div class="girasol-wrapper">
-            <div class="cabeza-girasol">
-                <div class="petalos-girasol">
-                    <div class="petalo-g"></div>
-                    <div class="petalo-g"></div>
-                    <div class="petalo-g"></div>
-                    <div class="petalo-g"></div>
-                    <div class="petalo-g"></div>
-                    <div class="petalo-g"></div>
-                    <div class="petalo-g"></div>
-                    <div class="petalo-g"></div>
-                </div>
-                <div class="centro-girasol"></div>
-            </div>
-            <div style="position: relative;">
-                <div class="tallo-girasol"></div>
-                <div class="hoja-girasol"></div>
-            </div>
-        </div>
-
-        <!-- Flor 2: Tulipán -->
-        <div class="tulipan-wrapper">
-            <div class="cabeza-tulipan"></div>
-            <div style="position: relative;">
-                <div class="tallo-tulipan"></div>
-                <div class="hoja-tulipan"></div>
-            </div>
-        </div>
-
-    </div>
+    <!-- Contenedor del Corazón de Flores -->
+    <div id="heart-container"></div>
 
     <!-- Firma Inferior -->
     <div class="firma">
         J.C.L.A
     </div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.getElementById('heart-container');
+            const scale = 11; 
+
+            // 1. DIBUJAR LOS 16 GIRASOLES EN EL BORDE
+            const numSunflowers = 16;
+            for (let i = 0; i < numSunflowers; i++) {
+                let t = (i / numSunflowers) * Math.PI * 2;
+                
+                let x = scale * (16 * Math.pow(Math.sin(t), 3));
+                let y = -scale * (13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+                
+                let sunflower = document.createElement('div');
+                sunflower.className = 'sunflower';
+                sunflower.style.left = `${x}px`;
+                sunflower.style.top = `${y}px`;
+                
+                sunflower.style.animationDelay = `${i * 0.15}s`; 
+                container.appendChild(sunflower);
+            }
+
+            // 2. LLENAR EL INTERIOR CON TULIPANES
+            const numTulips = 55; 
+            const colors = ['red', 'yellow', 'purple'];
+
+            for (let i = 0; i < numTulips; i++) {
+                let t = Math.random() * Math.PI * 2;
+                let r = Math.sqrt(Math.random()) * 0.82; 
+                let s = scale * r;
+                
+                let x = s * (16 * Math.pow(Math.sin(t), 3));
+                let y = -s * (13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+                
+                x += (Math.random() - 0.5) * 12;
+                y += (Math.random() - 0.5) * 12;
+
+                let tulip = document.createElement('div');
+                let colorClass = colors[Math.floor(Math.random() * colors.length)];
+                tulip.className = `tulip ${colorClass}`;
+                tulip.style.left = `${x}px`;
+                tulip.style.top = `${y}px`;
+                
+                let delay = 2.5 + (Math.random() * 5);
+                tulip.style.animationDelay = `${delay}s`;
+                container.appendChild(tulip);
+            }
+        });
+    </script>
 </body>
 </html>
